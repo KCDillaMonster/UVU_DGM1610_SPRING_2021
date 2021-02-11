@@ -8,14 +8,10 @@ public class PlayerController : MonoBehaviour
     public float speed = 20.0f;
     //Create variable for the players inputs
     public float hInput;
+    //xRange boundary limit
     private float xRange = 23;
+    //GambeObject for the projectile food
     public GameObject projectilePreFab;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,7 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
-
+        //Spawn the food projectile using a specified key
         if(Input.GetKeyDown(KeyCode.Space))
         {
             //Launch the projectile
