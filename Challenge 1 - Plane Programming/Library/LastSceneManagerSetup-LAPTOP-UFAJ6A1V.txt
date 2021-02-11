@@ -1,0 +1,6 @@
+sceneSetups:
+- path: C:/Users/kevin/OneDrive/Documents/College School Work/DGM 1610/Other-UVU_DGM1610_SPRING_2021/Prototype
+    2 - Stampede/Assets/Scenes/Prototype 2.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
