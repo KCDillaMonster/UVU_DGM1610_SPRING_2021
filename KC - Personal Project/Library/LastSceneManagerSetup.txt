@@ -1,0 +1,6 @@
+sceneSetups:
+- path: C:/Users/kevin/OneDrive/Documents/College School Work/DGM 1610/Git/UVU_DGM1610_SPRING_2021/Prototype
+    3 - Run and Jump/Assets/Scenes/Prototype 3.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
