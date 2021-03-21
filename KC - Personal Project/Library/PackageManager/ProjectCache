@@ -15,7 +15,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637516356260850015
+      ticks: 637519597640935610
     m_Hash: 3982900652
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -163,6 +163,7 @@ m_PackageAssets:
         - 3.0.2
         - 3.0.3
         - 3.0.4
+        - 3.0.5
         compatible:
         - 1.0.2
         - 1.0.6
@@ -186,6 +187,7 @@ m_PackageAssets:
         - 3.0.2
         - 3.0.3
         - 3.0.4
+        - 3.0.5
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -388,10 +390,12 @@ m_PackageAssets:
         - 1.1.19
         - 1.1.20
         - 1.1.22
+        - 1.1.24
         compatible:
         - 1.1.20
         - 1.1.22
-        verified: 1.1.22
+        - 1.1.24
+        verified: 1.1.24
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -505,6 +509,7 @@ m_PackageAssets:
         - 1.5.0
         - 1.5.1
         - 1.5.3
+        - 1.5.4
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.1
@@ -523,6 +528,7 @@ m_PackageAssets:
         - 2.1.0
         - 2.1.1
         - 2.1.3
+        - 2.1.4
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -537,10 +543,12 @@ m_PackageAssets:
         - 3.0.0
         - 3.0.1
         - 3.0.3
+        - 3.0.4
         compatible:
         - 3.0.1
         - 3.0.3
-        verified: 3.0.3
+        - 3.0.4
+        verified: 3.0.4
       dependencies:
       - name: com.unity.ugui
         version: 1.0.0
@@ -643,6 +651,7 @@ m_PackageAssets:
         - 1.4.4
         - 1.4.5
         - 1.4.6
+        - 1.4.7
         - 1.5.0-pre.2
         - 1.5.0-preview.1
         - 1.5.0-preview.2
@@ -653,7 +662,9 @@ m_PackageAssets:
         - 1.5.1-pre.2
         - 1.5.1-pre.3
         - 1.5.2
+        - 1.5.4
         - 1.6.0-pre.1
+        - 1.6.0-pre.3
         compatible:
         - 1.2.6
         - 1.2.7
@@ -693,6 +704,7 @@ m_PackageAssets:
         - 1.4.4
         - 1.4.5
         - 1.4.6
+        - 1.4.7
         - 1.5.0-pre.2
         - 1.5.0-preview.1
         - 1.5.0-preview.2
@@ -703,8 +715,10 @@ m_PackageAssets:
         - 1.5.1-pre.2
         - 1.5.1-pre.3
         - 1.5.2
+        - 1.5.4
         - 1.6.0-pre.1
-        verified: 1.4.6
+        - 1.6.0-pre.3
+        verified: 1.4.7
       dependencies: []
       resolvedDependencies: []
       keywords:
