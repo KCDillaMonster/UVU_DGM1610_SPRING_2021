@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     public float speed;
     private GameObject focalPoint;
+    public GameObject powerupIndicator;
+
+    public bool hasPowerup;
+    public float powerupStrength = 16.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,37 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * speed * Time.deltaTime * forwardInput);
+        playerRb.AddForce(focalPoint.transform.forward * speed * Time.deltaTime);
+    }
+    //Allows the player to pickup powerup and remove the object from view
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Powerup"))
+        {
+            hasPowerup = true;
+            powerupIndicator
+            Destroy(other.gameObject);
+            Debug.Log("Powerup Collected!");
+            //Run the countdown for the powerup's power
+            StartCoroutine(PowerupCountdownRoutine());
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy") && hasPowerup)
+        {
+            //Gets the enemy's rigidbody for physics properties
+            Rigidbody enemyRigidBody = collision.gameObject.GetComponent<Rigidbody>();
+            //Gets the position of the enemy in relatio to the player
+            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
+            //Report player collision with pickup
+            Debug.Log("Player has collided with " + collision.gameObject + " with powerup set to " + hasPowerup);
+            //Adds force to the enemy's rigidbody using the before formulas
+            enemyRigidBody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+        }
+    }
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7); hasPowerup = false;
     }
 }
