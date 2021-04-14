@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    public float speed;
+    private float speed = 100;
     private GameObject focalPoint;
     public GameObject powerupIndicator;
 
-    public bool hasPowerup;
-    public float powerupStrength = 16.0f;
+    private bool hasPowerup;
+    private float powerupStrength = 16.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * speed * Time.deltaTime);
+        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
     //Allows the player to pickup powerup and remove the object from view
     void OnTriggerEnter(Collider other)
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         if(other.CompareTag("Powerup"))
         {
             hasPowerup = true;
-            powerupIndicator
+            powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
             Debug.Log("Powerup Collected!");
             //Run the countdown for the powerup's power
@@ -54,5 +55,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator PowerupCountdownRoutine()
     {
         yield return new WaitForSeconds(7); hasPowerup = false;
+        powerupIndicator.gameObject.SetActive(false);
     }
 }
