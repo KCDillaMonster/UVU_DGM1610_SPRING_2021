@@ -12,7 +12,7 @@ public class SpawnManagerX : MonoBehaviour
     private float spawnZMax = 25; // set max spawn Z
 
     public int enemyCount;
-    public float enemySpeed;
+    public float enemySpeed = 100.0f;
     public int waveCount = 1;
 
 
@@ -22,7 +22,7 @@ public class SpawnManagerX : MonoBehaviour
     void Update()
     {
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-
+        
         if (enemyCount == 0)
         {
             SpawnEnemyWave(waveCount);
@@ -56,9 +56,8 @@ public class SpawnManagerX : MonoBehaviour
         {
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
-        enemySpeed = enemyPrefab.GetComponent<EnemyX>().speed;
         waveCount++;
-        enemySpeed *= 2;
+        enemySpeed += 10;
         ResetPlayerPosition(); // put player back at start
 
     }

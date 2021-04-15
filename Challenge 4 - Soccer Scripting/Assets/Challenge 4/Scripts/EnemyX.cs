@@ -13,7 +13,6 @@ public class EnemyX : MonoBehaviour
     {
         enemyRb = GetComponent<Rigidbody>();
         playerGoal = GameObject.Find("Player Goal");
-        speed = GetComponent<SpawnManagerX>().enemySpeed;
     }
 
     // Update is called once per frame
@@ -21,8 +20,8 @@ public class EnemyX : MonoBehaviour
     {
         // Set enemy direction towards player goal and move there
         Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
+        speed = GameObject.Find("Spawn Manager").GetComponent<SpawnManagerX>().enemySpeed;
         enemyRb.AddForce(lookDirection * speed * Time.deltaTime);
-
     }
 
     private void OnCollisionEnter(Collision other)
