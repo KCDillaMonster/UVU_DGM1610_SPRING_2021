@@ -12,13 +12,17 @@ public class PlayerController : MonoBehaviour
     // where the constraints on the map will be located.
     private float zRange = 48.0f;
     private float xRange = 48.0f;
-    //variables to use for the player inputs
+    //variables to use for the player inputs for movement
     private float hInput;
     private float vInput;
     // players rigid body to use for certain functions
     private Rigidbody playerRb;
     // boolean for if the player is on the ground
     private bool isOnGround = true;
+    // boolean for if the game if over
+    public bool isGameOver = false;
+    // boolean for if the player has a powerup
+    private bool hasPowerup;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,23 +35,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Call functions for moving the player and constraints
         MovePlayer();
         PlayerConstraints();
     }
     void MovePlayer()
     {
-        // gathers players inputs and controls
-        hInput = Input.GetAxis("Horizontal");
-        vInput = Input.GetAxis("Vertical");
-        // describe what happens when inputs are put in
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * vInput);
-        transform.Translate(Vector3.right * turnSpeed * hInput * Time.deltaTime);
-        // spacebar input results in jump
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if(isGameOver == false)
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            // while player is in the air, change boolean to keep from added jumping
-            isOnGround = false;
+            // gathers players inputs and controls
+            hInput = Input.GetAxis("Horizontal");
+            vInput = Input.GetAxis("Vertical");
+            // describe what happens when inputs are put in
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * vInput);
+            transform.Translate(Vector3.right * turnSpeed * hInput * Time.deltaTime);
+            // spacebar input results in jump
+            if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                // while player is in the air, change boolean to keep from added jumping
+                isOnGround = false;
+            }
         }
     }
     void PlayerConstraints()
@@ -80,5 +88,35 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
         }
+        // If zombie collides with Player, destroy the player
+        if(collision.gameObject.CompareTag("Zombie") && hasPowerup == false)
+        {
+            isGameOver = true;
+            Debug.Log("Game Over");
+        }
+        if(collision.gameObject.CompareTag("Zombie") && hasPowerup == true)
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Zombie Destroyed");
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        // If statement for when the player picks up a powerup and destroys it
+        if(other.CompareTag("Powerup"))
+        {
+            hasPowerup = true;
+            //powerupIndicator.gameObject.SetActive(true);
+            Destroy(other.gameObject);
+            Debug.Log("Powerup Collected!");
+            //Run the countdown for the powerup's power
+            StartCoroutine(PowerupCountdownRoutine());
+        }
+    }
+    IEnumerator PowerupCountdownRoutine()
+    {
+        //Countdown for the powerups effects
+        yield return new WaitForSeconds(7); hasPowerup = false;
+        //powerupIndicator.gameObject.SetActive(false);
     }
 }
