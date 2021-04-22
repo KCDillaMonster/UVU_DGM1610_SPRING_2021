@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5772622458831919819}
   m_Layer: 0
   m_Name: Skull_01
-  m_TagString: Untagged
+  m_TagString: Bad Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179494152997357031}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.42912176, y: 0.5520757, z: 0.46483076}
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3406fad0203e9074eae34234f429fbf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: -5
+  pointValue: -50
   explosionParticle: {fileID: 7303472089845130122, guid: 6cbc21f5e9162483993a2b84b14d5ac8,
     type: 3}
