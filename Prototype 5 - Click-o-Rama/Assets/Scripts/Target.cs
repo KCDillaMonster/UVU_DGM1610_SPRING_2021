@@ -5,7 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
-    private float minSpeed = 12, maxSpeed = 16, maxTorque = 10, xRange = 4, ySpawnPos = -6;
+    private float minSpeed = 15, maxSpeed = 18, maxTorque = 13, xRange = 4, ySpawnPos = -6;
     private GameManager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
