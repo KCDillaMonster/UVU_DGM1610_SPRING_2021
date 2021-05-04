@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // List for zombie prefabs to generate
-    public GameObject[] zombiePrefabs;
-    //List for powerup prefabs to generate
-    public GameObject[] powerupPrefabs;
+    // List for zombie prefabs to generate and a list for powerup prefabs to generate
+    public GameObject[] zombiePrefabs, powerupPrefabs;
     //Spawn range on map for x and z
-    private float spawnRangeX = 20;
-    private float spawnPosZ = 20;
+    private float spawnRangeX = 20, spawnPosZ = 20;
     //Start and proggressing delays on zombie and powerup generation
-    private float zombieStartDelay = 2.0f;
-    private float zombieSpawnInterval = 1.5f;
-    private float powerupStartDelay = 5.0f;
-    private float powerupSpawnDelay = 10.0f;
+    private float zombieStartDelay = 2.0f, zombieSpawnInterval = 1.5f, powerupStartDelay = 5.0f, powerupSpawnDelay = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
+        //Create Powerups and zombies at game start
         InvokeRepeating("SpawnRandomZombies", zombieStartDelay, zombieSpawnInterval);
         InvokeRepeating("SpawnRandomPowerups", powerupStartDelay, powerupSpawnDelay);
     }
